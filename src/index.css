@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: sans-serif;
+}
+
+.tab {
+  padding: 0.5rem;
+  border: 1px solid black;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.tab.active {
+  background-color: #ddd;
+  font-weight: bold;
+}
+
+.tab span {
+  font-size: 0.8rem;
+  color: red;
+}
+.main-container {
+  height: calc(100vw - 112px);
+}
+
+.search-box {
+  font-size: 1.5rem;
+  width: 80vw;
+  margin: auto;
+}
+.btn {
+  font-size: 1rem;
+  padding: 0.2rem 0.6rem;
+}
+
+.all-tabs {
+  display: flex;
+}
+
+.options-primary {
+  display: flex;
+}
+.options-primary-left {
+  display: flex;
+  gap: 0.5rem;
+}
