@@ -3,10 +3,18 @@ import "./index.css";
 const backButton = document.querySelector(".back-url-btn");
 const forwardButton = document.querySelector(".forward-url-btn");
 const reloadButton = document.querySelector(".reload-url-btn");
+
+const hideWindowButton = document.querySelector(".hide-browser-btn");
+const maximizeWindowButton = document.querySelector(".maximize-browser-btn");
+const closeWindowButton = document.querySelector(".close-browser-btn");
+
 const addBtn = document.querySelector(".add-tab-btn");
 const tabList = document.querySelector(".all-tabs");
 const searchBox = document.querySelector(".search-box");
+const colorpickerButton = document.querySelector(".colorpicker-btn");
+const colorpicker = document.querySelector(".colorpicker");
 const mainContainer = document.querySelector(".main-container");
+const body = document.body;
 
 let activeTabId = null;
 const tabs = new Map();
@@ -87,36 +95,61 @@ searchBox.addEventListener("keydown", (e) => {
     e.preventDefault();
     const activeTab = tabs.get(activeTabId);
     if (activeTab) {
-      activeTab.webview.setAttribute("src", searchBox.value);
+      try {
+        activeTab.webview.setAttribute("src", searchBox.value.trim());
+      } catch (err) {
+        console.error(err.message);
+      }
     }
   }
 });
 
-backButton.addEventListener("click", () => {
+backButton.addEventListener("click", async () => {
   const activeTab = tabs.get(activeTabId);
   if (activeTab) {
     const { webview } = activeTab;
-    if (webview.canGoBack()) {
+    if (await webview.canGoBack()) {
       webview.goBack();
     }
   }
 });
 
-forwardButton.addEventListener("click", () => {
+forwardButton.addEventListener("click", async () => {
   const activeTab = tabs.get(activeTabId);
   if (activeTab) {
     const { webview } = activeTab;
-    if (webview.canGoForward()) {
+    if (await webview.canGoForward()) {
       webview.goForward();
     }
   }
 });
 
-// reloadButton.addEventListener("click", () => {
-//   const activeTab = tabs.get(activeTabId);
-//   if (activeTab) {
-//     const { webview } = activeTab;
-//     webview.reload();
-//   }
-// });
+reloadButton.addEventListener("click", () => {
+  const activeTab = tabs.get(activeTabId);
+  if (activeTab) {
+    const { webview } = activeTab;
+    webview.reload();
+  }
+});
+
+colorpickerButton.addEventListener("click", () => {
+  colorpicker.click();
+});
+
+colorpicker.addEventListener("input", () => {
+  body.style.backgroundColor = colorpicker.value;
+});
+
+hideWindowButton.addEventListener("click", () => {
+  window.electronAPI.controlWindow("minimize");
+});
+
+maximizeWindowButton.addEventListener("click", () => {
+  window.electronAPI.controlWindow("maximize");
+});
+
+closeWindowButton.addEventListener("click", () => {
+  window.electronAPI.controlWindow("close");
+});
+
 createTab();

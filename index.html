@@ -9,15 +9,24 @@
       <div class="options-primary-left">
         <button class="back-url-btn btn">&#x2190;</button>
         <button class="forward-url-btn btn">&#x2192;</button>
-        <button class="reload-btn btn">&#x21bb;</button>
+        <button class="reload-url-btn btn">&#x21bb;</button>
         <button class="add-tab-btn btn">&#x2b;</button>
         <div class="all-tabs"></div>
+      </div>
+      <div class="options-primary-right">
+        <button class="hide-browser-btn btn">&#x2212;</button>
+        <button class="maximize-browser-btn btn">&#x274F;</button>
+        <button class="close-browser-btn btn">&#x292B;</button>
       </div>
     </div>
     <div class="main-tab">
       <form action="">
         <input type="text" placeholder="search here" class="search-box" />
       </form>
+      <div class="colorpicker-btn">
+        <img src="./src/pallete.png" alt="pallete" />
+      </div>
+      <input type="color" value="#e0ffee" class="colorpicker" />
     </div>
     <div class="main-container"></div>
     <script type="module" src="/src/renderer.js"></script>

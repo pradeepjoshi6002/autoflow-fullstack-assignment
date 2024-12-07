@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, ipcMain } from "electron";
 import path from "node:path";
 import started from "electron-squirrel-startup";
 
@@ -6,11 +6,13 @@ if (started) {
   app.quit();
 }
 
+let mainWindow;
 const createWindow = () => {
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     autoHideMenuBar: true,
+    frame: false,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       webviewTag: true,
@@ -41,5 +43,27 @@ app.whenReady().then(() => {
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
     app.quit();
+  }
+});
+
+ipcMain.on("control-window", (event, action) => {
+  if (!mainWindow) return;
+
+  switch (action) {
+    case "minimize":
+      mainWindow.minimize();
+      break;
+    case "maximize":
+      if (mainWindow.isMaximized()) {
+        mainWindow.unmaximize();
+      } else {
+        mainWindow.maximize();
+      }
+      break;
+    case "close":
+      mainWindow.close();
+      break;
+    default:
+      break;
   }
 });

@@ -5,6 +5,7 @@
 }
 body {
   font-family: sans-serif;
+  overflow: hidden;
 }
 
 .tab {
@@ -24,7 +25,7 @@ body {
   color: red;
 }
 .main-container {
-  height: calc(100vw - 112px);
+  height: calc(100vw - 120px);
 }
 
 .search-box {
@@ -35,16 +36,52 @@ body {
 .btn {
   font-size: 1rem;
   padding: 0.2rem 0.6rem;
+  -webkit-app-region: no-drag;
 }
 
 .all-tabs {
   display: flex;
+  overflow-x: scroll;
+  scrollbar-width: none;
 }
 
 .options-primary {
   display: flex;
+  justify-content: space-between;
+  -webkit-app-region: drag;
 }
+.options-primary * {
+  -webkit-app-region: no-drag;
+}
+
 .options-primary-left {
   display: flex;
   gap: 0.5rem;
+}
+.main-tab {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.color-options {
+  display: none;
+}
+
+.colorpicker {
+  display: none;
+}
+.colorpicker-btn {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.colorpicker-btn img {
+  width: 100%;
+  height: auto;
 }
