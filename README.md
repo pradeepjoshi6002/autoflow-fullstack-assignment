@@ -3,6 +3,7 @@
 A modern Electron application built with the **Electron Forge Vite template** for rapid development and performance.
 
 
+![screenshot](repository/screenshot-2.png)
 ![screenshot](repository/screenshot-1.png)
 
 ## **Features**
