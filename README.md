@@ -34,3 +34,15 @@ Make sure you have the following installed on your system:
    ```bash
    git clone https://github.com/pradeepjoshi6002/autoflow-fullstack-assignment
    ```
+2. install node modules:
+   ```run
+   **npm i**
+   ```
+3. dev-mode:
+   ```run
+   **npm run start**
+   ```
+   build-mode:
+   ```run
+   **npm run make**
+   ```
