@@ -10,7 +10,7 @@ body {
   overflow: hidden;
 }
 
-/* Tabs */
+/* ---------------- Tabs ---------------- */
 .tab {
   padding: 0.5rem;
   border: 1px solid black;
@@ -30,7 +30,7 @@ body {
   min-width: 200px;
 }
 
-/* Containers */
+/* ---------------- Containers ---------------- */
 .main-container {
   height: calc(100vw - 120px);
 }
@@ -39,16 +39,16 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0rem 0.8rem 0.2rem 0.8rem;
 }
 
 .all-tabs {
   display: flex;
   overflow-x: scroll;
   scrollbar-width: none;
-  max-width: 70%;
 }
 
-/* Options */
+/* ---------------- Options ---------------- */
 .options-primary {
   padding: 0.4rem 1rem;
   display: flex;
@@ -66,22 +66,32 @@ body {
   gap: 0.5rem;
 }
 
-/* Buttons */
+/* ---------------- Buttons ---------------- */
 .btn {
   font-size: 1rem;
   border-radius: 0.5rem;
   padding: 0.4rem 0.6rem;
+  border: 1px solid black;
   -webkit-app-region: no-drag;
 }
 
-/* Search Box */
-.search-box {
-  font-size: 1.5rem;
-  width: 80vw;
-  margin: auto;
+.close-browser-btn {
+  background-color: red;
+  color: white;
 }
 
-/* Color Picker */
+/* ---------------- Search Box ---------------- */
+.search-box {
+  font-size: 1.3rem;
+  width: 80vw;
+  margin: auto;
+  border-radius: 0.5rem;
+  outline: none;
+  border: 1px solid gray;
+  padding: 0.2rem 0.5rem;
+}
+
+/* ---------------- Color Picker ---------------- */
 .color-options {
   display: none;
 }
@@ -92,8 +102,8 @@ body {
 
 .colorpicker-btn {
   cursor: pointer;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -103,4 +113,40 @@ body {
 .colorpicker-btn img {
   width: 100%;
   height: auto;
+}
+.colorpicker {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  z-index: 10;
+}
+
+/* ---------------- Loader ---------------- */
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  display: none;
+  z-index: 1000;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

@@ -13,6 +13,7 @@ const createWindow = () => {
     height: 600,
     autoHideMenuBar: true,
     frame: false,
+    icon: path.join(__dirname, "src", "icons", "app.ico"),
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       webviewTag: true,

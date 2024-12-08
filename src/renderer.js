@@ -24,7 +24,7 @@ function createTab(url = "https://www.google.com") {
 
   const tabButton = document.createElement("div");
   tabButton.className = "tab";
-  tabButton.textContent = "Tab-" + (tabList.childElementCount + 1);
+  tabButton.textContent = "New Tab";
   tabButton.dataset.tabId = tabId;
   tabButton.addEventListener("click", () => switchTab(tabId));
 
@@ -46,10 +46,21 @@ function createTab(url = "https://www.google.com") {
   webview.style.display = "none";
   webview.setAttribute("allowpopups", "true");
 
+  const loader = document.getElementById("loader");
+
+  webview.addEventListener("did-start-loading", () => {
+    loader.style.display = "block";
+  });
+
+  webview.addEventListener("did-stop-loading", () => {
+    loader.style.display = "none";
+  });
+
   mainContainer.appendChild(webview);
 
   tabs.set(tabId, { tabButton, webview });
   switchTab(tabId);
+  searchBox.value = "";
 }
 
 function switchTab(tabId) {
@@ -66,6 +77,8 @@ function switchTab(tabId) {
   tabButton.classList.add("active");
   webview.style.display = "flex";
   webview.style.height = "100%";
+
+  searchBox.value = webview.getURL() || "";
 }
 
 function closeTab(tabId) {
@@ -101,7 +114,13 @@ searchBox.addEventListener("keydown", (e) => {
     const activeTab = tabs.get(activeTabId);
     if (activeTab) {
       try {
-        activeTab.webview.setAttribute("src", searchBox.value.trim());
+        let url = searchBox.value.trim();
+        if (!/^https?:\/\//i.test(url)) {
+          url = `https://www.google.com/search?q=${encodeURIComponent(url)}`;
+        }
+
+        activeTab.webview.setAttribute("src", url);
+        searchBox.value = url;
       } catch (err) {
         console.error(err.message);
       }
