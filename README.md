@@ -2,6 +2,9 @@
 
 A modern Electron application built with the **Electron Forge Vite template** for rapid development and performance.
 
+
+![screenshot](repository/screenshot-1.png)
+
 ## **Features**
 
 - Cross-platform desktop application (Windows, macOS, Linux)
