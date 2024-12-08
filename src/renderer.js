@@ -78,6 +78,11 @@ function closeTab(tabId) {
 
   tabs.delete(tabId);
 
+  if (tabs.size === 0) {
+    window.electronAPI.controlWindow("close");
+    return;
+  }
+
   if (activeTabId === tabId) {
     if (tabs.size > 0) {
       const nextTabId = Array.from(tabs.keys())[0];

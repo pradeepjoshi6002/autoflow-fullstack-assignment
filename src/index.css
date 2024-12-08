@@ -1,18 +1,22 @@
+/* General Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: sans-serif;
   overflow: hidden;
 }
 
+/* Tabs */
 .tab {
   padding: 0.5rem;
   border: 1px solid black;
   margin-right: 0.5rem;
   cursor: pointer;
+  border-radius: 0.5rem;
 }
 
 .tab.active {
@@ -23,47 +27,61 @@ body {
 .tab span {
   font-size: 0.8rem;
   color: red;
+  min-width: 200px;
 }
+
+/* Containers */
 .main-container {
   height: calc(100vw - 120px);
 }
 
-.search-box {
-  font-size: 1.5rem;
-  width: 80vw;
-  margin: auto;
-}
-.btn {
-  font-size: 1rem;
-  padding: 0.2rem 0.6rem;
-  -webkit-app-region: no-drag;
-}
-
-.all-tabs {
-  display: flex;
-  overflow-x: scroll;
-  scrollbar-width: none;
-}
-
-.options-primary {
-  display: flex;
-  justify-content: space-between;
-  -webkit-app-region: drag;
-}
-.options-primary * {
-  -webkit-app-region: no-drag;
-}
-
-.options-primary-left {
-  display: flex;
-  gap: 0.5rem;
-}
 .main-tab {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.all-tabs {
+  display: flex;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  max-width: 70%;
+}
+
+/* Options */
+.options-primary {
+  padding: 0.4rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  -webkit-app-region: drag;
+}
+
+.options-primary * {
+  -webkit-app-region: no-drag;
+}
+
+.options-primary-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Buttons */
+.btn {
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  -webkit-app-region: no-drag;
+}
+
+/* Search Box */
+.search-box {
+  font-size: 1.5rem;
+  width: 80vw;
+  margin: auto;
+}
+
+/* Color Picker */
 .color-options {
   display: none;
 }
@@ -71,6 +89,7 @@ body {
 .colorpicker {
   display: none;
 }
+
 .colorpicker-btn {
   cursor: pointer;
   width: 30px;
