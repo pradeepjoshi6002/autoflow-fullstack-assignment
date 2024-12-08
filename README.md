@@ -9,7 +9,7 @@ A modern Electron application built with the **Electron Forge Vite template** fo
 ## **Features**
 
 - Cross-platform desktop application (Windows, macOS, Linux)
-- Built using **Electron**, **Vite**, and **JavaScript/TypeScript**
+- Built using **Electron**, **Vite**, and **JavaScript**
 - Simple and efficient tab-based browser functionality
 - Built-in loading animations
 - Custom color picker functionality
