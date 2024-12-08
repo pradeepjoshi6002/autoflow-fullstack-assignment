@@ -36,13 +36,13 @@ Make sure you have the following installed on your system:
    ```
 2. install node modules:
    ```run
-   **npm i**
+   npm i
    ```
 3. dev-mode:
    ```run
-   **npm run start**
+   npm run start
    ```
    build-mode:
    ```run
-   **npm run make**
+   npm run make
    ```
